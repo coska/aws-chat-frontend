@@ -1,1 +1,1 @@
-# aws-chat-front
+# aws-chat-frontend
