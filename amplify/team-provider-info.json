@@ -1,0 +1,25 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-awschatfrontend-dev-223020-authRole",
+      "UnauthRoleArn": "arn:aws:iam::546700368236:role/amplify-awschatfrontend-dev-223020-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::546700368236:role/amplify-awschatfrontend-dev-223020-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-awschatfrontend-dev-223020-deployment",
+      "UnauthRoleName": "amplify-awschatfrontend-dev-223020-unauthRole",
+      "StackName": "amplify-awschatfrontend-dev-223020",
+      "StackId": "arn:aws:cloudformation:us-east-1:546700368236:stack/amplify-awschatfrontend-dev-223020/2a2e91c0-c6c7-11ed-9900-0ae358702b83",
+      "AmplifyAppId": "dzvtu1rpdyf16"
+    },
+    "categories": {
+      "auth": {
+        "awschatfrontend2b3385bc": {
+          "userPoolId": "us-east-1_C0Eo9ztMM",
+          "userPoolName": "cognito-coska-chat-user-pool",
+          "webClientId": "9ual96b29d0a8cd0vcija7ve1",
+          "nativeClientId": "9ual96b29d0a8cd0vcija7ve1"
+        }
+      }
+    }
+  }
+}
