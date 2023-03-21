@@ -30,4 +30,5 @@ jobs:
       - name: Deploy app build to S3 bucket
         run: aws s3 cp \
             --recursive \
+            --region us-east-1 \
             build s3://s3-coska-chat-frontend
