@@ -1,5 +1,5 @@
 # Name of workflow as seen in Github actions tab
-name: dev-build-and-deploy
+name: dev-build
 # Run workflow only on push to dev branch
 on:
   push:
