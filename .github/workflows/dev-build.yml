@@ -7,11 +7,11 @@ on:
       - develop
 
 env:
-  REACTCONFIG: {"SourceDir":"src\","DistributionDir":"build","BuildCommand":"npm run-script build","StartCommand":"npm run-script start"}
-  AWSCLOUDFORMATIONCONFIG: {"configLevel":"project","useProfile":false,"profileName":"default","accessKeyId":"${{ secrets.AWS_ACCESS_KEY_ID }}","secretAccessKey":"${{ secrets.AWS_SECRET_ACCESS_KEY }}","region":"${{ secrets.AWS_REGION }}"}
-  AMPLIFY: {"projectName":"headlessProjectName","appId":"amplifyServiceProjectAppId","envName":"myenvname","defaultEditor":"code"}
-  FRONTEND: {"frontend":"javascript","framework":"react","config":$REACTCONFIG}
-  PROVIDERS: {"awscloudformation":$AWSCLOUDFORMATIONCONFIG}
+  REACTCONFIG: "{\"SourceDir\":\"src\",\"DistributionDir\":\"build\",\"BuildCommand\":\"npm run-script build\",\"StartCommand\":\"npm run-script start\"}"
+  AWSCLOUDFORMATIONCONFIG: "{\"configLevel\":\"project\",\"useProfile\":false,\"profileName\":\"default\",\"accessKeyId\":\"${{ secrets.AWS_ACCESS_KEY_ID }}\",\"secretAccessKey\":\"${{ secrets.AWS_SECRET_ACCESS_KEY }}\",\"region\":\"${{ secrets.AWS_REGION }}\"}"
+  AMPLIFY: "{\"projectName\":\"headlessProjectName\",\"appId\":\"amplifyServiceProjectAppId\",\"envName\":\"myenvname\",\"defaultEditor\":\"code\"}"
+  FRONTEND: "{\"frontend\":\"javascript\",\"framework\":\"react\",\"config\":$REACTCONFIG}"
+  PROVIDERS: "{\"awscloudformation\":$AWSCLOUDFORMATIONCONFIG}"
 
 jobs:
   # To build the project
