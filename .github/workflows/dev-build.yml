@@ -27,7 +27,7 @@ jobs:
       - name: Installing dependencies
         run: npm install
       - name: Installing amplify
-        run: npm install aws-amplify
+        run: npm install -g @aws-amplify/cli
       - name: Pull amplify environment
         run: amplify pull --amplify $AMPLIFY --frontend $FRONTEND --providers $PROVIDERS --yes
       - name: Building project
