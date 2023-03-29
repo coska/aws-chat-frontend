@@ -6,13 +6,6 @@ on:
     branches:
       - develop
 
-env:
-  REACTCONFIG: "{\"SourceDir\":\"src\",\"DistributionDir\":\"build\",\"BuildCommand\":\"npm run-script build\",\"StartCommand\":\"npm run-script start\"}"
-  AWSCLOUDFORMATIONCONFIG: "{\"configLevel\":\"project\",\"useProfile\":false,\"profileName\":\"default\",\"accessKeyId\":\"${{ secrets.AWS_ACCESS_KEY_ID }}\",\"secretAccessKey\":\"${{ secrets.AWS_SECRET_ACCESS_KEY }}\",\"region\":\"${{ secrets.AWS_REGION }}\"}"
-  AMPLIFY: "{\"projectName\":\"headlessProjectName\",\"appId\":\"amplifyServiceProjectAppId\",\"envName\":\"myenvname\",\"defaultEditor\":\"code\"}"
-  FRONTEND: "{\"frontend\":\"javascript\",\"framework\":\"react\",\"config\":$REACTCONFIG}"
-  PROVIDERS: "{\"awscloudformation\":$AWSCLOUDFORMATIONCONFIG}"
-
 jobs:
   # To build the project
   build-react:
@@ -26,9 +19,5 @@ jobs:
           node-version: "16"
       - name: Installing dependencies
         run: npm install
-      - name: Installing amplify
-        run: npm install -g @aws-amplify/cli
-      - name: Pull amplify environment
-        run: amplify pull --amplify $AMPLIFY --frontend $FRONTEND --providers $PROVIDERS --yes
       - name: Building project
         run: npm run build
