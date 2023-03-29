@@ -1,0 +1,45 @@
+{
+  "auth": {
+    "awschatfrontend2b3385bc": {
+      "customAuth": false,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "imported"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_awschatfrontend2b3385bc_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "awschatfrontend2b3385bc"
+        }
+      ]
+    },
+    "AMPLIFY_auth_awschatfrontend2b3385bc_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "awschatfrontend2b3385bc"
+        }
+      ]
+    },
+    "AMPLIFY_auth_awschatfrontend2b3385bc_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "awschatfrontend2b3385bc"
+        }
+      ]
+    },
+    "AMPLIFY_auth_awschatfrontend2b3385bc_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "awschatfrontend2b3385bc"
+        }
+      ]
+    }
+  }
+}
