@@ -33,6 +33,7 @@ const useWebSocket: () => [string[], (msg: string) => void] = () => {
             console.log('unsubscribed');
             subject.current?.unsubscribe();
         };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const sendMessage = (msg: string) => {
