@@ -1,6 +1,8 @@
 import { useRecoilState, useRecoilValueLoadable } from 'recoil';
 import { Container, LeftMenu, Main, Menu } from './components';
 import { currentMenuIndexState, menus, Result, resultsSelector } from './state';
+import SocketComponent from './websocket';
+import { useState } from 'react';
 
 const ResultList = () => {
     const loadable = useRecoilValueLoadable(resultsSelector);
@@ -27,6 +29,7 @@ const ResultList = () => {
   
 const Sample = () => {
     const [currentMenuIndex, setCurrentMenuIndex] = useRecoilState(currentMenuIndexState);
+    const [showSocketComponent, setShowSocketComponent] = useState(false);
 
     return (
         <Container>
@@ -42,6 +45,13 @@ const Sample = () => {
                         ))
                     }
                 </ul>
+                <label>
+                    <input type="checkbox" checked={showSocketComponent} onChange={() => setShowSocketComponent(!showSocketComponent)} />
+                    <span>show socket component</span>
+                </label>
+                {
+                    showSocketComponent && <SocketComponent />
+                }
             </LeftMenu>
             <Main>
                 <ResultList />
