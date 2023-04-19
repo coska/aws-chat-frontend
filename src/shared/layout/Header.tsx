@@ -34,11 +34,11 @@ function Header(props: any) {
                         <Link component={RouterLink} variant="button" underline="none" color="text.primary" to="/websocket" sx={{ my: 1, mx: 1.5 }}>
                             Websocket
                         </Link>
+                        <Link component={RouterLink} variant="button" underline="none" color="text.primary" to="/sse" sx={{ my: 1, mx: 1.5 }}>
+                            Server Sent Events
+                        </Link>
                         <Link component={RouterLink} variant="button" underline="none" color="text.primary" to="/rooms" sx={{ my: 1, mx: 1.5 }}>
                             Chat Rooms
-                        </Link>
-                        <Link component={RouterLink} variant="button" underline="none" color="text.primary" to="/profile" sx={{ my: 1, mx: 1.5 }}>
-                            Profile
                         </Link>
                     </nav>
                     <Stack direction="row" alignItems="center" gap={1}>

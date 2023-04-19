@@ -10,7 +10,7 @@ import Container from "@mui/material/Container";
 
 import { Amplify } from "aws-amplify";
 import Sample from "./Sample";
-import ServerSentEvents from "./Sample/ServerSentEvents";
+import ServerSentEvents2 from "./Sample/ServerSentEvents2";
 import SockJSWebsocket from "./Sample/SockJSWebsocket";
 import awsConfig from "./aws-exports";
 import Header from "./shared/layout/Header";
@@ -34,8 +34,7 @@ const App = () => {
                                     <Routes>
                                         <Route path="/rooms" element={<Rooms />} />
                                         <Route path="/websocket" element={<SockJSWebsocket />} />
-                                        <Route path="/websocket" element={<SockJSWebsocket />} />
-                                        <Route path="/sse" element={<ServerSentEvents />} />
+                                        <Route path="/sse" element={<ServerSentEvents2 />} />
                                         <Route path="*" element={<Sample />} />
                                     </Routes>
                                 </Box>

@@ -9,19 +9,19 @@ const SockJSWebsocket = () => {
     const [name, setName] = useState("");
     const [tempName, setTempName] = useState("");
     const [clientRef, setClientRef] = useState();
-    
+
     const handleUsernameKeyDown = (event) => {
         if (event.key === 'Enter') {
-          setName(tempName);
+            setName(tempName);
         }
-      };
+    };
 
-      
+
     const handleMessageKeyDown = (event) => {
         if (event.key === 'Enter') {
-          sendMessage();
+            sendMessage();
         }
-      };
+    };
 
     const sendMessage = () => {
         clientRef.sendMessage(
@@ -34,6 +34,17 @@ const SockJSWebsocket = () => {
         );
         setTypedMessage("");
     };
+
+    const setUser = async (name) => {
+        const requestOptions = {
+            method: "POST",
+        };
+        const response = await fetch(`http://localhost:8080/sse/rooms/${roomId}/users/${name}`, requestOptions);
+
+        if (response.status === 200) {
+            setName(name);
+        }
+    }
 
     const displayMessages = () => {
         return (
@@ -64,8 +75,8 @@ const SockJSWebsocket = () => {
     };
 
     return (
-        <div>
-            <div className="text-center">
+        <div className="container">
+            <div className="text-center" style={{ marginTop: "90px" }}>
                 <h4 style={{ marginTop: "0px", marginBottom: "5px", fontWeight: "bold" }}>
                     CHAT ROOM ( User : <span style={{ color: "red" }}>{name} </span>)
                 </h4>
@@ -151,7 +162,7 @@ const SockJSWebsocket = () => {
                         <Button
                             variant="secondary"
                             onClick={() => {
-                                setName("Temp User");
+                                setUser("Temp User");
                             }}
                         >
                             Cancel
@@ -159,7 +170,7 @@ const SockJSWebsocket = () => {
                         <Button
                             variant="primary"
                             onClick={() => {
-                                setName(tempName);
+                                setUser(tempName);
                             }}
                         >
                             Save
