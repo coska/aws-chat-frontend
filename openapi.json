@@ -1,0 +1,7 @@
+{
+    "packageName": "coska-client",
+    "apiPackage": "coska-client.chat.api",
+    "modelPackage": "coska-client.chat.model",
+    "invokerPackage": "coska.invoker",
+    "withSeparateModelsAndApi": true
+  }

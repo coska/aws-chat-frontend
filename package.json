@@ -40,7 +40,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "openapi": "openapi-generator generate -i http://localhost:8080/coskachat-api-docs -g typescript-axios -o src/coska-client -c ./openapi.json --skip-validate-spec"
   },
   "eslintConfig": {
     "extends": [
