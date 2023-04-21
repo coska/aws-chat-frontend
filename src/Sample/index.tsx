@@ -2,8 +2,7 @@ import { useRecoilState, useRecoilValueLoadable } from 'recoil';
 import { Container, LeftMenu, Main, Menu } from './components';
 import { currentMenuIndexState, menus, Result, resultsSelector } from './state';
 import SocketComponent from './websocket';
-import { useEffect, useState } from 'react';
-import { Api } from '../api';
+import { useState } from 'react';
 
 const ResultList = () => {
     const loadable = useRecoilValueLoadable(resultsSelector);
@@ -27,28 +26,7 @@ const ResultList = () => {
             );
     }
 }
-
-function MyComponent() {
-    const [email, setEmail] = useState('');
-    useEffect(() => {
-        console.log(`${email}`);
-    }, [email]);
-
-    const getMyEmail = async () => {
-        const resp = await Api.SecurityTest?.getSecurityTest();
-        setEmail(resp?.data ?? "");
-        console.log(resp?.data);
-    };
-
-    return (
-        <div>
-            <p>email: {email}</p>
-            <button onClick={getMyEmail}>getMyEmail</button>
-        </div>
-    );
-
-}
-
+  
 const Sample = () => {
     const [currentMenuIndex, setCurrentMenuIndex] = useRecoilState(currentMenuIndexState);
     const [showSocketComponent, setShowSocketComponent] = useState(false);
@@ -77,7 +55,6 @@ const Sample = () => {
             </LeftMenu>
             <Main>
                 <ResultList />
-                <MyComponent />
             </Main>
         </Container>
     )
