@@ -12,8 +12,7 @@ const useWebSocket: () => [string[], (msg: string) => void] = () => {
     };
 
     useEffect(() => {
-        // subject.current = webSocket('wss://ws.postman-echo.com/raw');
-        subject.current = webSocket('ws://localhost:8080/aws-chat-websocket');
+        subject.current = webSocket('wss://ws.postman-echo.com/raw');
 
         subject.current.subscribe({
             next: (msg: { message: string }) => {
