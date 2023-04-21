@@ -4,6 +4,13 @@
   "private": true,
   "dependencies": {
     "@aws-amplify/ui-react": "^4.3.8",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.12.0",
+    "@mui/x-data-grid": "^6.2.0",
+    "@mui/x-date-pickers": "^6.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -12,12 +19,17 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "aws-amplify": "^5.0.15",
+    "bootstrap": "^5.2.3",
+    "dayjs": "^1.11.7",
     "ramda": "^0.28.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
     "react-router": "^6.8.1",
+    "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
+    "react-stomp": "^4.3.0",
     "recoil": "^0.7.6",
     "rxjs": "^7.8.0",
     "styled-components": "^5.3.9",
@@ -28,7 +40,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "openapi": "openapi-generator generate -i http://localhost:8080/coskachat-api-docs -g typescript-axios -o src/coska-client -c ./openapi.json --skip-validate-spec"
   },
   "eslintConfig": {
     "extends": [
@@ -50,5 +63,6 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.26"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }
