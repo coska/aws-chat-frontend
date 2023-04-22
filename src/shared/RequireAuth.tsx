@@ -1,0 +1,17 @@
+import { FunctionComponent, ReactElement } from 'react';
+import { useLocation, Navigate } from 'react-router-dom';
+import { useAuthenticator } from '@aws-amplify/ui-react';
+
+const RequireAuth: FunctionComponent<{ children: ReactElement }> = ({ children }) => {
+
+    const location = useLocation();
+    const { route } = useAuthenticator((context) => [context.route]);
+
+    if (route !== 'authenticated') {
+        return <Navigate to="/" state={{ from: location }} replace />;
+    }
+
+    return children;
+}
+
+export default RequireAuth;

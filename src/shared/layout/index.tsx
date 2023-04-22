@@ -1,26 +1,17 @@
-import React from "react";
-
-import { Link as RouterLink } from "react-router-dom";
-
-import PeopleIcon from "@mui/icons-material/People";
-import AppBar from "@mui/material/AppBar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import GlobalStyles from "@mui/material/GlobalStyles";
-import Link from "@mui/material/Link";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import { IconButton, Menu } from "@mui/material";
+import { Outlet, Link as RouterLink } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Stack from "@mui/material/Stack";
+import { useAuthenticator } from "@aws-amplify/ui-react";
+import { AppBar, Button, Toolbar, Box, Stack, CssBaseline, Link, Typography } from "@mui/material";
 
-function Header(props: any) {
-    const { signOut, user } = props;
+const Layout = () => {
+    const { route, user, signOut } = useAuthenticator((context) => [
+        context.route,
+        context.user,
+        context.signOut,
+      ]);
+    
     return (
-        <React.Fragment>
+        <Box sx={{ display: "flex" }}>
             <CssBaseline />
             <AppBar position="fixed" color="default" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
                 <Toolbar sx={{ flexWrap: "wrap" }}>
@@ -41,17 +32,23 @@ function Header(props: any) {
                             Chat Rooms
                         </Link>
                     </nav>
-                    <Stack direction="row" alignItems="center" gap={1}>
-                        <AccountCircleIcon />
-                        <Typography variant="body1">Hello {user?.attributes?.email}</Typography>
-                    </Stack>
-                    <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }} onClick={signOut}>
-                        Sign out
-                    </Button>
+                    {route === 'authenticated' &&
+                    <>
+                        <Stack direction="row" alignItems="center" gap={1}>
+                            <AccountCircleIcon />
+                            <Typography variant="body1">Hello {user?.attributes?.email}</Typography>
+                        </Stack>
+                        <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }} onClick={signOut}>
+                            Sign out
+                        </Button>
+                    </>
+                    }
                 </Toolbar>
             </AppBar>
-        </React.Fragment>
+            
+            <Outlet />
+        </Box>
     );
 }
 
-export default Header;
+export default Layout;

@@ -2,47 +2,66 @@ import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
-
-import Container from "@mui/material/Container";
-
 import { Amplify } from "aws-amplify";
 import Sample from "./Sample";
 import ServerSentEvents2 from "./Sample/ServerSentEvents2";
 import SockJSWebsocket from "./Sample/SockJSWebsocket";
 import awsConfig from "./aws-exports";
-import Header from "./shared/layout/Header";
+import Layout from "./shared/layout";
 import Rooms from "./chat/Rooms";
-import Box from "@mui/material/Box";
+import RequireAuth from "./shared/RequireAuth";
+import Login from "./shared/Login";
 
 Amplify.configure(awsConfig);
 
 const App = () => {
     return (
         <RecoilRoot>
-            <BrowserRouter>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <Authenticator>
-                        {(props) => {
-                            const { signOut, user } = props;
-                            return (
-                                <Box sx={{ display: "flex" }}>
-                                    <Header user={user} signOut={signOut} />
-
-                                    <Routes>
-                                        <Route path="/rooms" element={<Rooms />} />
-                                        <Route path="/websocket" element={<SockJSWebsocket />} />
-                                        <Route path="/sse" element={<ServerSentEvents2 />} />
-                                        <Route path="*" element={<Sample />} />
-                                    </Routes>
-                                </Box>
-                            );
-                        }}
-                    </Authenticator>
-                </LocalizationProvider>
-            </BrowserRouter>
+            <Authenticator.Provider>
+                <BrowserRouter>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <Routes>
+                            <Route path="/" element={<Layout />}>
+                                <Route index element={<Login />} />
+                                <Route
+                                    path="/rooms"
+                                    element={
+                                        <RequireAuth>
+                                            <Rooms />
+                                        </RequireAuth>
+                                    }
+                                />
+                                <Route
+                                    path="/websocket"
+                                    element={
+                                        <RequireAuth>
+                                            <SockJSWebsocket />
+                                        </RequireAuth>
+                                    }
+                                />
+                                <Route
+                                    path="/sse"
+                                    element={
+                                        <RequireAuth>
+                                            <ServerSentEvents2 />
+                                        </RequireAuth>
+                                    }
+                                />
+                                <Route
+                                    path="*"
+                                    element={
+                                        <RequireAuth>
+                                            <Sample />
+                                        </RequireAuth>
+                                    }
+                                />
+                            </Route>
+                        </Routes>
+                    </LocalizationProvider>
+                </BrowserRouter>
+            </Authenticator.Provider>
         </RecoilRoot>
     );
 };
