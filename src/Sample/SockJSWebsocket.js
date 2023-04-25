@@ -39,7 +39,7 @@ const SockJSWebsocket = () => {
         const requestOptions = {
             method: "POST",
         };
-        const response = await fetch(`http://localhost:8080/sse/rooms/${roomId}/users/${name}`, requestOptions);
+        const response = await fetch(`/sse/rooms/${roomId}/users/${name}`, requestOptions);
 
         if (response.status === 200) {
             setName(name);
