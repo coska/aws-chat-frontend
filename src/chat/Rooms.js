@@ -75,7 +75,6 @@ const StyledMenu = styled((props) => (
 }));
 
 const Rooms = () => {
-    const [homeRoom, setHomeRoom] = React.useState({ roomName: "Home" });
     const [rooms, setRooms] = React.useState();
     const [currentRoom, setCurrentRoom] = React.useState();
     const [newRoomName, setNewRoomName] = React.useState();
