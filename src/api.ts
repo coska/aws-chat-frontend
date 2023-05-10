@@ -7,9 +7,14 @@ async function getAccessToken() {
 }
 
 function getConfiguration() {
+
+    var remoteUrl = process.env.REACT_APP_CHAT_REMOTE_URL === undefined ? "http://localhost:8080" :
+        process.env.REACT_APP_CHAT_REMOTE_URL;
+    console.log(remoteUrl);
     const configParameters: ConfigurationParameters = {
         accessToken: getAccessToken,
-        basePath: "http://localhost:8080".replace(/\/+$/, ""),
+        basePath: remoteUrl.replace(/\/+$/, ""),
+        // basePath: "http://127.0.0.1:8080"
     };
 
     const config = new Configuration(configParameters);
