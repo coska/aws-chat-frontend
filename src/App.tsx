@@ -13,6 +13,7 @@ import Layout from "./shared/layout";
 import Rooms from "./chat/Rooms";
 import RequireAuth from "./shared/RequireAuth";
 import Login from "./shared/Login";
+import Profile from "./chat/Profile";
 
 Amplify.configure(awsConfig);
 
@@ -46,6 +47,14 @@ const App = () => {
                                     element={
                                         <RequireAuth>
                                             <ServerSentEvents2 />
+                                        </RequireAuth>
+                                    }
+                                />
+                                <Route
+                                    path="/profile"
+                                    element={
+                                        <RequireAuth>
+                                            <Profile />
                                         </RequireAuth>
                                     }
                                 />
